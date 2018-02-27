@@ -1,13 +1,16 @@
-$(document).ready(function () {
-	$("span:even").css('color', 'red');
+$(function(){
+	var carouselList = $(".carousel ul");
+	var firstItem = carouselList.find("li:first");
+	var lastItem = carouselList.find("li:last");
 
-	var paragraphs = $('p');
-	paragraphs.each(function(index, element){
-		var button = '<button class="btn" data-tmp="' + index + '">Click me</button>';
-		$(element).append(button);
-	});
+	function changeSlide(){
+		carouselList.animate({'marginLeft':-400}, 500, moveFirstSlide);
+	}
 
-	$("button").click(function(){
-		alert($(this).attr("data-tmp"));
-	});
+	function moveFirstSlide(){ 
+		lastItem.after(firstItem);
+		$(this).css({marginLeft:0});
+	}
+
+	setInterval(changeSlide, 3000);
 });
