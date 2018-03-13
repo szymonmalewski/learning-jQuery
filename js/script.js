@@ -7,7 +7,7 @@ $(document).ready(function () {
 		$(element).append(button);
 	});
 
-	$("button").click(function(){
+	$("button").on("click", function() {
 		alert($(this).attr("data-tmp"));
 	});
 });
